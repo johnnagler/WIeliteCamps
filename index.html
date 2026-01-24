@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wisconsin Youth Soccer Camps</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1a472a 0%, #2d5a3d 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(26, 71, 42, 0.7), rgba(26, 71, 42, 0.7)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%2387CEEB" width="1200" height="600"/><circle cx="600" cy="300" r="200" fill="%23fff" opacity="0.1"/></svg>');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 8rem 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #ffc107;
+            color: #1a472a;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .btn:hover {
+            background: #ffb300;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 193, 7, 0.4);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #1a472a;
+            margin-bottom: 3rem;
+        }
+
+        .camps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .camp-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .camp-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .camp-header {
+            background: linear-gradient(135deg, #2d5a3d, #1a472a);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .camp-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .camp-body {
+            padding: 2rem;
+        }
+
+        .camp-body ul {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .camp-body li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .camp-body li:last-child {
+            border-bottom: none;
+        }
+
+        .price {
+            font-size: 2rem;
+            color: #1a472a;
+            font-weight: bold;
+            text-align: center;
+            margin: 1rem 0;
+        }
+
+        .features {
+            background: #f8f9fa;
+            padding: 4rem 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature h3 {
+            color: #1a472a;
+            margin-bottom: 1rem;
+        }
+
+        .contact {
+            background: #1a472a;
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .contact h2 {
+            margin-bottom: 2rem;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        footer {
+            background: #0d2416;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">⚽ WI Soccer Camps</div>
+            <ul>
+                <li><a href="#camps">Camps</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Elevate Your Game This Summer</h1>
+        <p>Premier youth soccer training camps across Wisconsin</p>
+        <a href="#camps" class="btn">Explore Camps</a>
+    </section>
+
+    <div class="container" id="camps">
+        <h2 class="section-title">2026 Summer Camps</h2>
+        
+        <div class="camps-grid">
+            <div class="camp-card">
+                <div class="camp-header">
+                    <h3>Beginner Skills Camp</h3>
+                    <p>Ages 6-9</p>
+                </div>
+                <div class="camp-body">
+                    <ul>
+                        <li>📅 June 16-20, 2026</li>
+                        <li>⏰ 9:00 AM - 12:00 PM</li>
+                        <li>📍 Madison, Green Bay, Milwaukee</li>
+                        <li>⚽ Basic ball control & dribbling</li>
+                        <li>🎯 Passing fundamentals</li>
+                        <li>🏃 Fun games & activities</li>
+                    </ul>
+                    <div class="price">$225</div>
+                    <a href="#contact" class="btn" style="width: 100%; text-align: center;">Register Now</a>
+                </div>
+            </div>
+
+            <div class="camp-card">
+                <div class="camp-header">
+                    <h3>Intermediate Development</h3>
+                    <p>Ages 10-13</p>
+                </div>
+                <div class="camp-body">
+                    <ul>
+                        <li>📅 June 23-27, 2026</li>
+                        <li>⏰ 9:00 AM - 3:00 PM</li>
+                        <li>📍 Madison, Green Bay, Appleton</li>
+                        <li>⚽ Advanced techniques</li>
+                        <li>🎯 Tactical awareness</li>
+                        <li>🏆 Small-sided competitions</li>
+                    </ul>
+                    <div class="price">$425</div>
+                    <a href="#contact" class="btn" style="width: 100%; text-align: center;">Register Now</a>
+                </div>
+            </div>
+
+            <div class="camp-card">
+                <div class="camp-header">
+                    <h3>Elite Performance Camp</h3>
+                    <p>Ages 14-17</p>
+                </div>
+                <div class="camp-body">
+                    <ul>
+                        <li>📅 July 7-11, 2026</li>
+                        <li>⏰ 8:00 AM - 5:00 PM</li>
+                        <li>📍 Madison</li>
+                        <li>⚽ Position-specific training</li>
+                        <li>🎯 College prep guidance</li>
+                        <li>💪 Strength & conditioning</li>
+                    </ul>
+                    <div class="price">$550</div>
+                    <a href="#contact" class="btn" style="width: 100%; text-align: center;">Register Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose Our Camps?</h2>
+            <div class="features-grid">
+                <div class="feature">
+                    <div class="feature-icon">👨‍🏫</div>
+                    <h3>Expert Coaches</h3>
+                    <p>Licensed UEFA and USSF certified coaches with professional playing experience</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🏟️</div>
+                    <h3>Premium Facilities</h3>
+                    <p>State-of-the-art turf fields and training equipment at top Wisconsin venues</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">👥</div>
+                    <h3>Small Groups</h3>
+                    <p>Low coach-to-player ratios ensure personalized attention and development</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🎓</div>
+                    <h3>Skill Development</h3>
+                    <p>Comprehensive curriculum focusing on technical, tactical, and mental growth</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Ready to Join?</h2>
+            <p>Spaces are limited! Register early to secure your spot.</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>📧</span>
+                    <span>info@wisoccercamps.com</span>
+                </div>
+                <div class="contact-item">
+                    <span>📱</span>
+                    <span>(608) 555-GOAL</span>
+                </div>
+                <div class="contact-item">
+                    <span>📍</span>
+                    <span>Madison, Wisconsin</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Wisconsin Youth Soccer Camps. All rights reserved.</p>
+    </footer>
+</body>
+</html>
